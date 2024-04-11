@@ -48,7 +48,7 @@ spec:
                 wget -nc {{ .Values.models.sd14 }} -O /models/model.ckpt;
                 wget -nc {{ .Values.models.gfpGan13 }} -P /models;
                 wget -nc {{ .Values.models.realEsrGanx4p10 }} -P /models;
-                wget -nc {{ .Values.models.realEsrGanx4Animep02 }} -P /models
+                wget -nc {{ .Values.models.realEsrGanx4Animep02 }} -P /models;
                 echo "Download completed"
           volumeMounts:
             - mountPath: /models
