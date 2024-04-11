@@ -18,16 +18,16 @@ RUN wget \
 RUN conda install python=3.8.5 && conda clean -a -y
 RUN conda install pytorch==1.11.0 torchvision==0.12.0 cudatoolkit=11.3 -c pytorch && conda clean -a -y
 RUN git clone https://github.com/hlky/stable-diffusion.git && cd stable-diffusion && git reset --hard ff8c2d0b709f1e4180fb19fa5c27ec28c414cedd
-RUN conda env update --file stable-diffusion/environment.yaml --name base && conda clean -a -y
+# RUN conda env update --file stable-diffusion/environment.yaml --name base && conda clean -a -y
 RUN cd stable-diffusion && git pull && git reset --hard c5b2c86f1479dec75b0e92dd37f9357a68594bda && \
-  conda env update --file environment.yaml --name base && conda clean -a -y
+#  conda env update --file environment.yaml --name base && conda clean -a -y
 
 # Textual-inversion:
-RUN <<EOF
-git clone https://github.com/hlky/sd-enable-textual-inversion.git &&
-cd /sd-enable-textual-inversion && git reset --hard 08f9b5046552d17cf7327b30a98410222741b070 &&
-rsync -a /sd-enable-textual-inversion/ /stable-diffusion/
-EOF
+# RUN <<EOF
+# git clone https://github.com/hlky/sd-enable-textual-inversion.git &&
+# cd /sd-enable-textual-inversion && git reset --hard 08f9b5046552d17cf7327b30a98410222741b070 &&
+# rsync -a /sd-enable-textual-inversion/ /stable-diffusion/
+# EOF
 
 WORKDIR /stable-diffusion
 ENV TRANSFORMERS_CACHE=/cache/transformers TORCH_HOME=/cache/torch CLI_ARGS="" \
