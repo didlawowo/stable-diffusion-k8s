@@ -40,7 +40,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
         - name: ensure-stable-models
-          image: busybox:1.35
+          image: busybox:1.36
           command: ["/bin/sh"]
           args:
             - -c
@@ -49,9 +49,15 @@ spec:
                 wget -nc {{ .Values.models.gfpGan13 }} -P /models;
                 wget -nc {{ .Values.models.realEsrGanx4p10 }} -P /models;
                 wget -nc {{ .Values.models.realEsrGanx4Animep02 }} -P /models
+                echo "Download completed"
           volumeMounts:
             - mountPath: /models
               name: {{ include "stable-diffusion.fullname" . }}-model-store
+          resources:
+              limits:
+                memory: 8Gi
+              requests:
+                memory: 1Gi
       containers:
         - name: {{ .Chart.Name }}-stable-diffusion
           securityContext:
