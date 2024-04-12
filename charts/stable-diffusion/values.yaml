@@ -20,7 +20,7 @@ models:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-cliFlags: "--extra-models-cpu --optimized-turbo"
+cliFlags: "--extra-models-gpu --optimized-turbo"
 
 persistence:
   annotations: {}
@@ -60,6 +60,7 @@ service:
   type: NodePort
   targetPort: 7860
   port: 7860
+  nodePort: 32550
 
 ingress:
   enabled: false
@@ -85,9 +86,11 @@ resources:
   limits:
     cpu: 1
     memory: 20Gi
+    nvidia.com/gpu: 1
   requests:
     cpu: 1
     memory: 20Gi
+    nvidia.com/gpu: 1
 
 autoscaling:
   enabled: false
