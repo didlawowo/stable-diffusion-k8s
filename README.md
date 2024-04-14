@@ -47,6 +47,8 @@ The author(s) of this project are not responsible for any content generated usin
 
 # Thanks
 
+The base repository was made by [amithkk/stable-diffusion-k8s](https://github.com/amithkk/stable-diffusion-k8s). Few changes were made on top of this to fix exisiting bugs and issues.
+
 Special thanks to everyone behind these awesome projects, without them, none of this would have been possible:
 
 -   [hlky/stable-diffusion-webui](https://github.com/hlky/stable-diffusion-webui)
